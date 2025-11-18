@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS orders (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  external_id VARCHAR(128) UNIQUE NOT NULL,
+  user_id BIGINT NOT NULL,
+  chat_id BIGINT NOT NULL,
+  product_id INT NOT NULL,
+  product_name VARCHAR(255) NOT NULL,
+  amount INT NOT NULL,
+  currency VARCHAR(3) NOT NULL,
+  status VARCHAR(32) NOT NULL,
+  checkout_session_id VARCHAR(191) UNIQUE,
+  payment_intent_id VARCHAR(191),
+  refund_id VARCHAR(191),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_checkout_session (checkout_session_id),
+  INDEX idx_payment_intent (payment_intent_id),
+  INDEX idx_user_id (user_id),
+  INDEX idx_status (status)
+);

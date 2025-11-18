@@ -1,0 +1,26 @@
+{
+  "name": "telegram-stripe-shop",
+  "version": "2.0.0",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "migrate": "node db/migrate.js",
+    "test": "node --test src/orders.test.js src/stripe.test.js src/notifications.test.js src/refunds.test.js",
+    "refund": "node scripts/refund.js",
+    "test:db": "node scripts/test-db.js",
+    "test:stripe": "node scripts/test-stripe.js",
+    "test:bot": "node scripts/test-bot.js",
+    "test:notifications": "node scripts/test-notifications.js",
+    "test:all": "node scripts/test-db.js && node scripts/test-stripe.js && node scripts/test-bot.js",
+    "health": "node scripts/health-check.js",
+    "check:db": "node scripts/check-db-connection.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.18.2",
+    "mysql2": "^3.15.3",
+    "node-telegram-bot-api": "^0.66.0",
+    "stripe": "^12.0.0"
+  }
+}
